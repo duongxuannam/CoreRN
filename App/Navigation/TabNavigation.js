@@ -1,13 +1,16 @@
 import React from 'react'
 import { Image } from 'react-native'
 import { createBottomTabNavigator } from 'react-navigation'
-import { HomeNavigation, ProfileNavigation } from './RouteTab'
-import { Images,Metrics } from '../Theme'
+import { HomeNavigation, ProfileNavigation, SaveNavigation, MyBookingNavigation, InboxNavigation } from './RouteTab'
+import { Images, Metrics } from '../Theme'
 
 const TabBarNavigation = createBottomTabNavigator({
   HomeNavigation: {
     screen: HomeNavigation,
     navigationOptions: () => ({
+      header: {
+        visible: false,
+      },
       tabBarLabel: 'Home',
       tabBarIcon: ({ tintColor }) => {
         return (<Image
@@ -18,11 +21,50 @@ const TabBarNavigation = createBottomTabNavigator({
       },
     }),
   },
+  SaveNavigation: {
+    screen: SaveNavigation,
+    navigationOptions: () => ({
+      tabBarLabel: 'Saved',
+      tabBarIcon: ({ tintColor }) => {
+        return (<Image
+          resizeMode='contain'
+          source={Images.shape}
+          style={{ height: Metrics.normalize(20), width: Metrics.normalize(20), tintColor }}
+        />)
+      },
+    }),
+  },
+  MyBookingNavigation: {
+    screen: MyBookingNavigation,
+    navigationOptions: () => ({
+      tabBarLabel: 'My Booking',
+      tabBarIcon: ({ tintColor }) => {
+        return (<Image
+          resizeMode='contain'
+          source={Images.inbox}
+          style={{ height: Metrics.normalize(20), width: Metrics.normalize(20), tintColor }}
+        />)
+      },
+    }),
+  },
+  InboxNavigation: {
+    screen: InboxNavigation,
+    navigationOptions: () => ({
+      tabBarLabel: 'Inbox',
+
+      tabBarIcon: ({ tintColor }) => {
+        return (<Image
+          resizeMode='contain'
+          source={Images.inbox}
+          style={{ height: Metrics.normalize(20), width: Metrics.normalize(20), tintColor }}
+        />)
+      },
+    }),
+  },
   ProfileNavigation: {
     screen: ProfileNavigation,
     navigationOptions: () => ({
       tabBarLabel: 'Profile',
-
       tabBarIcon: ({ tintColor }) => {
         return (<Image
           resizeMode='contain'
@@ -36,8 +78,6 @@ const TabBarNavigation = createBottomTabNavigator({
   initialRouteName: 'HomeNavigation',
   lazy: false,
   tabBarPosition: 'bottom',
-  headerMode: 'none',
-  // animationEnabled: true,
   animationEnabled: false,
   tabBarOptions: {
     showLabel: true,

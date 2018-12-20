@@ -5,11 +5,10 @@ import {
   View,
   TouchableOpacity,
 } from 'react-native'
-import { showMessage } from 'react-native-flash-message'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { NavigationActions } from 'react-navigation'
 import AppActions from '../../Redux/AppRedux'
+import { NavigationActions } from 'react-navigation'
 
 class App extends PureComponent {
   static propTypes = {
@@ -18,21 +17,18 @@ class App extends PureComponent {
   render() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={() => showMessage({
-          message: 'Simple message',
-          type: 'info',
-        })} >
+        <TouchableOpacity onPress={() => this.props.test(true)} >
           <Text style={styles.welcome}>Welcome HOme!</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('SearchNavigation')} >
+        <TouchableOpacity onPress={() => this.props.test(false)} >
           <Text style={styles.welcome}>Welcome false!</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => this.props.dispatch(NavigationActions.navigate({ routeName: 'SearchNavigation' }))} >
           <Text style={styles.welcome}>go search!</Text>
         </TouchableOpacity>
         <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>anh sang chio loa</Text>
-      </View >
+        <Text style={styles.instructions}>mot ngay buon</Text>
+      </View>
     )
   }
 }

@@ -14,7 +14,9 @@
         "indent": [
             "error",
             2,
-            { "SwitchCase": 1 }
+            {
+                "SwitchCase": 1
+            }
         ],
         "linebreak-style": [
             "error",
@@ -28,16 +30,26 @@
             "error",
             "never"
         ],
-        "no-console": ["error"],
-        "react/display-name": ["off"],
-        "react/prop-types": ["error", {
-            "ignore": ["tintColor", "navigation", "dispatch"]
-        }],
+        "no-console": [
+            "error"
+        ],
+        "react/display-name": [
+            "off"
+        ],
+        "react/prop-types": [
+            "error",
+            {
+                "ignore": [
+                    "tintColor",
+                    "navigation",
+                    "dispatch"
+                ]
+            }
+        ],
         "comma-dangle": [
-          2,
-          "always-multiline"
-      ],
-      "parser": "babel-eslint"
-
+            2,
+            "always-multiline"
+        ],
+        "parser": "babel-eslint"
     }
 }
