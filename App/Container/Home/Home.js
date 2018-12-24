@@ -1,69 +1,33 @@
 import React, { PureComponent } from 'react'
 import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
+  StatusBar,
+  ScrollView,
 } from 'react-native'
-import { showMessage } from 'react-native-flash-message'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { NavigationActions } from 'react-navigation'
-import AppActions from '../../Redux/AppRedux'
+import styles from './styles'
+import HeaderImage from './HeaderImage'
+import Location from './Location'
+import HotDeal from './HotDeal'
+import Recommend from './Recommend'
+import Plus from './Plus'
 
-class App extends PureComponent {
+export default class App extends PureComponent {
   static propTypes = {
     test: PropTypes.func,
   }
+
   render() {
     return (
-      <View style={styles.container}>
-        <TouchableOpacity onPress={() => showMessage({
-          message: 'Simple message',
-          type: 'info',
-        })} >
-          <Text style={styles.welcome}>Welcome HOme!</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('SearchNavigation')} >
-          <Text style={styles.welcome}>Welcome false!</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => this.props.dispatch(NavigationActions.navigate({ routeName: 'SearchNavigation' }))} >
-          <Text style={styles.welcome}>go search!</Text>
-        </TouchableOpacity>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>anh sang chio loa</Text>
-      </View >
+
+      <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+        <StatusBar hidden={true} />
+        <HeaderImage />
+        <Location />
+        <HotDeal />
+        <Recommend />
+        <Plus />
+      </ScrollView >
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-})
-const mapStateToProps = (state) => ({
-  app: state.app,
-  nav: state.nav,
-})
-
-const mapDispatchToProps = (dispatch) => ({
-  test: (bol) => dispatch(AppActions.test(bol)),
-  dispatch,
-})
-export default connect(mapStateToProps, mapDispatchToProps)(App)
-
 

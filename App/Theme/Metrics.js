@@ -1,12 +1,12 @@
-import {Dimensions} from 'react-native'
+import { Dimensions } from 'react-native'
 const { width, height } = Dimensions.get('window')
 
-const scale = width/ 320
-const normalize = (size) => {
+const scale = width / 320
+export const normalize = (size) => {
   return Math.round(scale * size)
 }
-const scaleHeight = height/568
-const normalizeHeight = (size) => Math.round(scaleHeight * size)
+const scaleHeight = height / 568
+export const normalizeHeight = (size) => Math.round(scaleHeight * size)
 
 const metrics = {
   normalize,

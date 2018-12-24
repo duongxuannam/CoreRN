@@ -22,16 +22,20 @@ export const ProfileNavigation = createStackNavigator({
 })
 export const SaveNavigation = createStackNavigator({
   Save: { screen: Save },
+}, {
+  headerMode: 'none',
 })
 
 export const MyBookingNavigation = createStackNavigator({
   MyBooking: { screen: MyBooking },
-
+}, {
+  headerMode: 'none',
 })
 
 export const InboxNavigation = createStackNavigator({
   Inbox: { screen: Inbox },
-
+}, {
+  headerMode: 'none',
 })
 
 

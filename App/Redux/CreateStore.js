@@ -2,9 +2,9 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import Rehydration from '../Service/Rehydration'
 import ReduxPersist from '../Config/ReduxPersist'
 import createSagaMiddleware from 'redux-saga'
-// import ScreenTracking from './ScreenTrackingMiddleware'
-// import { createReactNavigationReduxMiddleware } from 'react-navigation-redux-helpers'
 import { navigationMiddleware } from '../Navigation/AppNavigation'
+import { composeWithDevTools } from 'redux-devtools-extension'
+
 // creates the store
 export default (rootReducer, rootSaga) => {
 
@@ -13,10 +13,6 @@ export default (rootReducer, rootSaga) => {
 
   /* ------------- Navigation Middleware ------------ */
 
-  // const navigationMiddleware = createReactNavigationReduxMiddleware(
-  //   'root',
-  //   state => state.nav
-  // )
   middleware.push(navigationMiddleware)
 
   /* ------------- Analytics Middleware ------------- */
@@ -34,7 +30,8 @@ export default (rootReducer, rootSaga) => {
 
   // if Reactotron is enabled (default for __DEV__), we'll create the store through Reactotron
   const createAppropriateStore = createStore // eslint-disable-line
-  const store = createAppropriateStore(rootReducer, compose(...enhancers))
+  // const store = createAppropriateStore(rootReducer, compose(...enhancers))
+  const store = createAppropriateStore(rootReducer, composeWithDevTools(...enhancers))
 
   // configure persistStore and check reducer version number
   if (ReduxPersist.active) {

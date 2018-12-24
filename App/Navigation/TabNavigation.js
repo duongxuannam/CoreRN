@@ -8,9 +8,6 @@ const TabBarNavigation = createBottomTabNavigator({
   HomeNavigation: {
     screen: HomeNavigation,
     navigationOptions: () => ({
-      header: {
-        visible: false,
-      },
       tabBarLabel: 'Home',
       tabBarIcon: ({ tintColor }) => {
         return (<Image
@@ -51,7 +48,6 @@ const TabBarNavigation = createBottomTabNavigator({
     screen: InboxNavigation,
     navigationOptions: () => ({
       tabBarLabel: 'Inbox',
-
       tabBarIcon: ({ tintColor }) => {
         return (<Image
           resizeMode='contain'
@@ -75,7 +71,7 @@ const TabBarNavigation = createBottomTabNavigator({
     }),
   },
 }, {
-  initialRouteName: 'HomeNavigation',
+  initialRouteName: 'ProfileNavigation',
   lazy: false,
   tabBarPosition: 'bottom',
   animationEnabled: false,
